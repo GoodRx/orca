@@ -23,6 +23,13 @@ jobs:
         - docker build -t compile -f Dockerfile.compile .
         - docker build -f Dockerfile.ubuntu .
 
+    - name: pre-commit checks
+      language: python
+      python: '3.7'
+      script:
+        - pip install -U pip pre-commit
+        - pre-commit run -a
+
 branches:
   only:
     - master

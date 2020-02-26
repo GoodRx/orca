@@ -1,0 +1,31 @@
+---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+exclude: ^\.\w+/.*
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.5.0
+    hooks:
+      # Filesystem
+      - id: check-case-conflict
+      - id: check-symlinks
+      # Whitespace
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+        # Templates generally have newlines for a reason.
+        exclude: .*template.*\.(yml|yaml|txt|json)
+      - id: mixed-line-ending
+      # Syntax
+      - id: check-merge-conflict
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-toml
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.20.0
+    hooks:
+      - id: yamllint
+        args:
+          - --strict
+        # Temp: Way too many problems.
+        exclude: ^orca-.*
