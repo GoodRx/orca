@@ -1,5 +1,5 @@
 FROM ubuntu:bionic
-MAINTAINER delivery-engineering@netflix.com
+MAINTAINER engineering@goodrx.com
 COPY --from=compile /compiled_sources/orca-web/build/install/orca /opt/orca
 RUN apt-get update && apt-get -y install openjdk-8-jre-headless wget
 RUN adduser --disabled-login --system spinnaker
