@@ -20,8 +20,8 @@ jobs:
       services:
         - docker
       script:
-        - docker build -t compile -f Dockerfile.compile .
-        - docker build -f Dockerfile.ubuntu .
+        - docker build -t goodrx/orca:compile -f Dockerfile.compile .
+        - docker build -t goodrx/orca:web -f Dockerfile.slim .
 
     - name: pre-commit checks
       language: python

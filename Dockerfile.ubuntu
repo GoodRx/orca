@@ -1,6 +1,6 @@
 FROM ubuntu:bionic
 MAINTAINER engineering@goodrx.com
-COPY --from=compile /compiled_sources/orca-web/build/install/orca /opt/orca
+COPY --from=goodrx/orca:compile /compiled_sources/orca-web/build/install/orca /opt/orca
 RUN apt-get update && apt-get -y install openjdk-8-jre-headless wget
 RUN adduser --disabled-login --system spinnaker
 RUN mkdir plugins && chown -R 102:nogroup plugins
